@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ 
+}
+
+body{
+    width:100%;
+    height: 100vh;
+    background-image: url("../img/bg-img.jpg");
+    background-size: cover;
+    backdrop-filter: blur(2px);    
+}
+
+.container{
+    width: 40%;
+    height: auto;
+    margin: auto;
+    background-color:#fff;
+    margin-top:30px;
+    border-radius: 30px;
+}
+
+.labels, .inputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+label{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.option-items{
+    width: 70px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    background-color: rgba(172, 167, 167, 0.729);
+    color: black;
+}
+
+.inputs input[type = 'number']{
+    border: none;
+    font-size: 20px;
+    background-color: rgba(172, 167, 167, 0.729);
+    border-radius: 8px;
+}
+
+.swap-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    position: absolute;
+    z-index: 999;
+}
