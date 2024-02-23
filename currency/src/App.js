@@ -1,7 +1,7 @@
-// import IndexBox from "./components/IndexBox";
 import { useState } from "react";
 import useCurrencyInfo from "./hooks/useCurrencyInfo";
 import IndexBox from "./components/IndexBox";
+import "./components/styles.css";
 
 function App() {
   const [amount, setAmount] = useState(0);
@@ -13,39 +13,48 @@ function App() {
   const options = Object.keys(currencyInfo);
 
   const swap = () => {
-    setFrom(to)
-    setTo(from)
-    setConvertedAmount(amount)
-    setAmount(convertedAmount)
-  }
+    setFrom(to);
+    setTo(from);
+    setConvertedAmount(amount);
+    setAmount(convertedAmount);
+  };
 
   const convert = () => {
-    setConvertedAmount(amount * currencyInfo[to])
-  }
+    setConvertedAmount(amount * currencyInfo[to]);
+  };
 
   return (
     <div>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        convert();
-        }}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          convert();
+        }}
+      >
+        <IndexBox
+          label="From"
+          amount={amount}
+          currencyOptions={options}
+          onCurrencyChange={(currency) => setFrom(currency)}
+          selectCurrency={from}
+          onAmountChange={(amount) => setAmount(amount)}
+        />
+
+        <button className="swap-btn" onClick={swap}>
+          Swap
+        </button>
 
         <IndexBox
-        label= "from"
-        amount = {amount}
-        currencyOptions={options}
-        onCurrencyChange={(currency)=>setAmount(currency)}
-        selectCurrency={from}
-        amountDisable
+          label="To"
+          amount={convertedAmount}
+          currencyOptions={options}
+          onCurrencyChange={(currency) => setTo(currency)}
+          selectCurrency={from}
+          amountDisable
         />
-        <IndexBox
-        label= "to"
-        amount = {convertedAmount}
-        currencyOptions={options}
-        onCurrencyChange={(currency)=>setTo(currency)}
-        selectCurrency={from}
-        amountDisable
-        />
+        <button type="submit" className="covert-btn">
+          Convert {from.toUpperCase()} to {to.toUpperCase()}
+        </button>
       </form>
     </div>
   );

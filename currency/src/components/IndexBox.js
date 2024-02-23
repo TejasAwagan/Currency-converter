@@ -7,7 +7,7 @@ function IndexBox({
   onAmountChange,
   onCurrencyChange,
   currencyOptions = [],
-  selectCurrency = false,
+  selectCurrency = "usd",
   amountDisable = false,
   currencyDisable = false
 }) {
@@ -23,7 +23,8 @@ function IndexBox({
         </div>
 
         <div className="inputs">
-          <input type="number" value={amount} onChange={(e)=>onAmountChange && onAmountChange(Number(e.target.value))} />
+          <input type="number" placeholder="Amount" value={amount} onChange={(e)=>onAmountChange && onAmountChange(Number(e.target.value))} />
+
           <select className="option-items" value={selectCurrency} onChange={(e)=>onCurrencyChange && onCurrencyChange(e.target.value)} disabled={currencyDisable}>
             {currencyOptions.map((currency)=>(
               <option key={currency} value={currency}>
